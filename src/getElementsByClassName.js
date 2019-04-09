@@ -10,8 +10,8 @@ var getElementsByClassName = function(className) {
   // your code here
 var searchElement = [];
 var findElements = function(element) {
-  for( var i = 0; i < element.classList; i++) {
-    if(elementclassList[i]===className) {
+  for( var i in element.classList) {
+    if(element.classList[i]===className) {
       searchElement.push(element)
     }
   }
