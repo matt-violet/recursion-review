@@ -14,11 +14,15 @@ if (Array.isArray(obj)) {
 	return "[" + newArr + "]";
 }
 if (Object.prototype.toString.call(obj) === '[object Object]') {
-	var newObj = {};
-	for (key in obj) {
-		newObj[key] = obj[key];	
+	var newObjArr = [];
+
+	for (var key in obj) {
+		if(typeof obj[key] !== 'function' && obj[key] !== undefined) {
+      newObjArr.push(stringifyJSON(key) + ':' + stringifyJSON(obj[key]));
+		} 
 	}
-	return "'" + newObj + "'";
+	// console.log(typeof Object.prototype.toString.call(obj));
+	return "{" + newObjArr + "}";
 }
 
 if (typeof obj === 'number') { // number 
@@ -38,5 +42,5 @@ if (obj === null) {  // null
 
 //undefined 
 };
-stringifyJSON({hello: 'wor'});
+stringifyJSON({});
 

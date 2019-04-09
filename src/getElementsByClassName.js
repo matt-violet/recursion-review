@@ -8,9 +8,20 @@
 // But instead we're going to implement it from scratch:
 var getElementsByClassName = function(className) {
   // your code here
-//if className = a node 
-//if found found push 
-// iterate the found push 
+var searchElement = [];
+var findElements = function(element) {
+  for( var i = 0; i < element.classList; i++) {
+    if(elementclassList[i]===className) {
+      searchElement.push(element)
+    }
+  }
+  if(element.childNodes) {
+    element.childNodes.forEach(function(item) {
+      findElements(item)
+    })
+  }
+}
 
-
+findElements(document.body);
+return searchElement;
 };
